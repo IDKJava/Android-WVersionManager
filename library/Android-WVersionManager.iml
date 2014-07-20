@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../../../../../..$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/libs" />
+        <option name="LIBRARY_PROJECT" value="true" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$USER_HOME$/workspace/the-elements/Android-WVersionManager/library">
+      <sourceFolder url="file://$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/gen" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$USER_HOME$/workspace/the-elements/Android-WVersionManager/library/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 17 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+
