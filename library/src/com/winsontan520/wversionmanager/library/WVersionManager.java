@@ -1,13 +1,14 @@
 package com.winsontan520.wversionmanager.library;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -457,20 +458,26 @@ public class WVersionManager implements IWVersionManager {
 
         @Override
         protected String doInBackground(String... uri) {
-            DefaultHttpClient client = new DefaultHttpClient();
             String responseBody = null;
-            HttpResponse httpResponse = null;
             ByteArrayOutputStream out = null;
+            BufferedReader br = null;
+            StringBuilder sb = null;
 
             try {
-                HttpGet httpget = new HttpGet(uri[0]);
-                httpResponse = client.execute(httpget);
-                statusCode = httpResponse.getStatusLine().getStatusCode();
+                URL urlObj = new URL(uri[0]);
+                HttpURLConnection urlConnection = (HttpURLConnection) urlObj.openConnection();
+                InputStream is = urlConnection.getInputStream();
+                statusCode = urlConnection.getResponseCode();
 
-                if (statusCode == HttpStatus.SC_OK) {
+                if (statusCode == HttpURLConnection.HTTP_OK) {
                     out = new ByteArrayOutputStream();
-                    httpResponse.getEntity().writeTo(out);
-                    responseBody = out.toString();
+                    br = new BufferedReader(new InputStreamReader((urlConnection.getInputStream())));
+                    sb = new StringBuilder();
+                    String output;
+                    while ((output = br.readLine()) != null) {
+                        sb.append(output);
+                    }
+                    responseBody = sb.toString();
                 }
 
             } catch (Exception e) {
@@ -491,7 +498,7 @@ public class WVersionManager implements IWVersionManager {
         protected void onPostExecute(String result) {
             versionCode = 0;
             String content = null;
-            if (statusCode != HttpStatus.SC_OK) {
+            if (statusCode != HttpURLConnection.HTTP_OK) {
                 Log.e(TAG, "Response invalid. status code=" + statusCode);
             } else {
                 try {
